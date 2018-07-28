@@ -2,6 +2,7 @@ import { watchSearch } from 'redux-state/sagas/search';
 
 export default function* rootSaga () {
     yield [
-        watchSearch()
+        //TEMP - Disabled saga to adhere to Test 1 requirements
+        // watchSearch()
     ]
 }
