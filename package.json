@@ -14,16 +14,9 @@
     "test": "cross-env BABEL_ENV=test mocha --require babel-core/register --require babel-register test/helpers/browser.js test/**/*.spec.js",
     "test:watch": "cross-env BABEL_ENV=test mocha --require babel-core/register --require babel-register --watch --watch-extensions jsx,js test/helpers/browser.js test/**/*.spec.js",
     "start": "webpack-dev-server",
-    "dev": "webpack-dashboard -t 'Github Search' -- webpack-dev-server",
     "build": "rimraf ./build && cross-env NODE_ENV=production webpack",
     "build:local": "rimraf ./build && cross-env NODE_ENV=production PUBLIC_URL=http://localhost:4000/build webpack",
-    "build:github-pages": "rimraf ./build && cross-env NODE_ENV=production PUBLIC_URL=https://courtneydl.github.io/pickup-location-input webpack",
-    "lint-break-on-errors": "eslint ./source/js ./webpack.config.js -f table --ext .js --ext .jsx",
-    "lint": "eslint ./source/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
-    "preview": "rm -rf ./build && NODE_ENV=\"production\" webpack-dashboard -t 'Github Search' -- webpack-dev-server",
-    "preview:windows": "rimraf ./build && set NODE_ENV=production && webpack-dashboard -t 'Github Search' -- webpack-dev-server",
-    "hook-add": "prepush install",
-    "hook-remove": "prepush remove"
+    "build:github-pages": "rimraf ./build && cross-env NODE_ENV=production PUBLIC_URL=https://courtneydl.github.io/pickup-location-input webpack"
   },
   "devDependencies": {
     "autoprefixer": "6.5.3",
@@ -83,7 +76,6 @@
     "es6-promise": "3.3.1",
     "immutable": "3.8.1",
     "lodash": "4.17.10",
-    "popper.js": "1.14.3",
     "prop-types": "15.5.10",
     "react": "15.5.4",
     "react-dom": "15.5.4",
@@ -91,7 +83,6 @@
     "react-redux": "4.4.8",
     "redux": "3.6.0",
     "redux-actions": "2.4.0",
-    "redux-thunk": "2.2.0",
-    "showdown": "1.7.1"
+    "redux-thunk": "2.2.0"
   }
 }

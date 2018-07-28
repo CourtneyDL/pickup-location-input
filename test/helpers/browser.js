@@ -23,5 +23,4 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
-// documentRef = document;
 const documentRef = document;

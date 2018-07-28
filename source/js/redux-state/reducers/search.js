@@ -6,7 +6,7 @@ import {
     SEARCH_COMPLETE
 } from 'redux-state/actions/search';
 
-export const initialState = Map({
+export const initial_state = Map({
     search_performed: false,
     search_term: '',
     results: List([])
@@ -26,7 +26,7 @@ const actionsMap = {
     }
 };
 
-export default function reducer(state = initialState, action = {}) {
+export default function reducer(state = initial_state, action = {}) {
     const fn = actionsMap[action.type];
     return fn ? fn(state, action) : state;
 }

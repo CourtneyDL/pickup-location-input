@@ -2,16 +2,11 @@ import { Map, List } from 'immutable';
 import {expect} from 'chai';
 
 import { SEARCH_TERM_UPDATE, SEARCH_COMPLETE } from '../../../source/js/redux-state/actions/search';
-import { initialState as initial_state } from '../../../source/js/redux-state/reducers/search';
+import { initial_state } from '../../../source/js/redux-state/reducers/search';
 import search_reducer from '../../../source/js/redux-state/reducers/search';
 import { manchester_results } from '../../libs/api-client.data';
 
 describe('reducers/search', function () {
-    const initial_state = Map({
-        search_performed: 0,
-        search_term: '',
-        results: List([])
-    });
 
     describe('INVALID_ACTION', function () {
 
