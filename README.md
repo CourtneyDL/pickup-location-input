@@ -7,7 +7,7 @@ The application was developed using React(15.5.4), Redux and Sass with a Webpack
 
 The codebase is derived from a boilerplate called [Marvin](https://github.com/workco/marvin/tree/d6d426243f02198a5bfaead181b4e72e0e1cbcd4). I used this for a [previous project](https://bitbucket.org/CourtneyDL/nasa-media-search) upon which this one is based.
 
-##Build Process
+## Build Process
 
 ### Install dependences
 ```
