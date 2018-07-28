@@ -4,13 +4,16 @@ import PropTypes from 'prop-types';
 import PickUpResult from 'components/PickUp/PickUpResult';
 
 const PickUpResults  = ({ search_performed, results }) => (
-    <div className="pickup-location-results">
-        { results.length === 0 && search_performed && <div className="no-results">No results found</div> }
+    <ul className="pickup-location-results">
+        { results.length === 0 && search_performed && 
+            <li>
+                <div className="no-results">No results found</div>
+            </li> }
         { 
             results.map((result,index) => 
                 <PickUpResult key={index} data={result}/>
         )}
-    </div>
+    </ul>
 );
 
 PickUpResults.propTypes = {

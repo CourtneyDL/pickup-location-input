@@ -19,7 +19,7 @@ describe('views/PickUp', function () {
         const wrapper = shallow(<PickUp/>);
 
         expect(wrapper.find('div.pickup-location-container')).to.have.length(1, 'Container class missing');
-        expect(wrapper.children()).to.have.length(2, 'Does not have 2 children');
+        expect(wrapper.find('div.pickup-location-holder').children()).to.have.length(2, 'holder Does not have 2 children');
         
         const heading_elem = wrapper.find('h2');
         expect(heading_elem).to.have.length(1,'does not have one h2');

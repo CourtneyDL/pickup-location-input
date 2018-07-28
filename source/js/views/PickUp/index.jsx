@@ -34,9 +34,11 @@ export class PickUp extends Component {
 
         return (
             <div className="pickup-location-container">
-                <h2>Where are you going?</h2>
-                <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
-                {search_term.length > 1 && search_performed && <PickUpResults results={results_array} search_performed={search_performed}/>}
+                <div className="pickup-location-holder">
+                    <h2>Where are you going?</h2>
+                    <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
+                    {search_term.length > 1 && search_performed && <PickUpResults results={results_array} search_performed={search_performed}/>}
+                </div>
             </div>
         );
     }

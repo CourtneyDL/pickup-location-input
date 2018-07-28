@@ -3,21 +3,22 @@ import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
 import PickupResult from '../../../source/js/components/PickUp/PickUpResult';
+import PickUpPlaceTypeTag from '../../../source/js/components/PickUp/PickUpPlaceTypeTag';
 
 import { manchester_results } from '../../libs/api-client.data';
 
 describe('components/PickUp/PickUpResult', function () {
     it('should be in its base state', function () {
         const wrapper = shallow(<PickupResult/>);
-        expect(wrapper.html()).to.equal('<div class="pickup-location-result"></div>', 'not an empty div');
+        expect(wrapper.html()).to.equal('<li><div class="pickup-location-result"></div></li>', 'not an empty div');
     });
     it('should display data', function () {
         const test_result = manchester_results[0];
         const wrapper = shallow(<PickupResult data={test_result}/>);
         
         const matching_place_type_elems = wrapper.findWhere(node =>
-            node.is('div.pickup-location-result-place-type') 
-            && node.text() === test_result.place_type);
+            node.is(PickUpPlaceTypeTag) 
+            && node.prop('place_type') === test_result.place_type);
         expect(matching_place_type_elems).to.have.length(1, 'Place type missing');
         
         const matching_name_elems = wrapper.findWhere(node =>
