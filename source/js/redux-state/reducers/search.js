@@ -6,7 +6,8 @@ import {
     SEARCH_COMPLETE
 } from 'redux-state/actions/search';
 
-const initialState = Map({
+export const initialState = Map({
+    search_performed: false,
     search_term: '',
     results: List([])
 });
@@ -19,6 +20,7 @@ const actionsMap = {
     },
     [SEARCH_COMPLETE]: (state,action) => {
         return state.merge({
+            search_performed: true,
             results: _.get(action, 'payload', [])
         });
     }

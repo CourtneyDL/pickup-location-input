@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 import PickUpResult from 'components/PickUp/PickUpResult';
 
-const PickUpResults  = ({ results }) => (
-    <div>
-        {results.map((result,index) => <PickUpResult key={index} data={result}/>)}
+const PickUpResults  = ({ search_performed, results }) => (
+    <div className="pickup-location-results">
+        { results.length === 0 && search_performed && <div className="no-results">No results found</div> }
+        { 
+            results.map((result,index) => 
+                <PickUpResult key={index} data={result}/>
+        )}
     </div>
 );
 

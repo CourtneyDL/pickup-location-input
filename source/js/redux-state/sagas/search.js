@@ -21,6 +21,6 @@ export function* performSearch () {
         const results = yield api.search(search_term);
         yield put(searchComplete(results));
     } catch (e) {
-        alert('An error occurred performing this search');
+        console.log('performSearch - error',e);
     }
 }

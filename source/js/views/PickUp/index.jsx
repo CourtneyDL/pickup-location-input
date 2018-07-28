@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { List } from 'immutable';
 
 import { updateSearchTerm } from 'redux-state/actions/search';
 
@@ -10,6 +11,7 @@ import PickUpResults from 'components/PickUp/PickUpResults';
 
 export class PickUp extends Component {
     static propTypes = {
+        search_performed: PropTypes.bool,
         search_term: PropTypes.string,
         results: PropTypes.object,
 
@@ -17,10 +19,9 @@ export class PickUp extends Component {
     }
 
     static defaultProps = {
+        search_performed: false,
         search_term: '',
-        results: {
-            toArray: () => []
-        }
+        results: List([])
     }
 
     onInputChange (value) {
@@ -28,14 +29,14 @@ export class PickUp extends Component {
     }
 
     render() {
-        const { search_term, results } = this.props;
-        const results_array = results.toArray();
+        const { search_term, results, search_performed } = this.props;
+        const results_array = results.toJS();
 
         return (
             <div className="pickup-location-container">
                 <h2>Where are you going?</h2>
                 <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
-                {search_term.length > 1 && results_array.length > 0 && <PickUpResults results={results_array}/>}
+                {search_term.length > 1 && search_performed && <PickUpResults results={results_array} search_performed={search_performed}/>}
             </div>
         );
     }
@@ -43,6 +44,7 @@ export class PickUp extends Component {
 
 export default connect(
     state => ({
+        search_performed: state.search.get('search_performed'),
         search_term: state.search.get('search_term'),
         results: state.search.get('results')
     }),
