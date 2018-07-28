@@ -35,7 +35,7 @@ export class PickUp extends Component {
             <div className="pickup-location-container">
                 <h2>Where are you going?</h2>
                 <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
-                {results_array.length > 0 && <PickUpResults results={results_array}/>}
+                {search_term.length > 1 && results_array.length > 0 && <PickUpResults results={results_array}/>}
             </div>
         );
     }

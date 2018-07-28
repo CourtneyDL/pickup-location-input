@@ -13,7 +13,7 @@ const getSearchState = state => state.search.toJS();
 export function* performSearch () {
     const { search_term } = yield select(getSearchState);
 
-    if (!search_term) {
+    if (!search_term || search_term.length < 2) {
         return;
     }
 
