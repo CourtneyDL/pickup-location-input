@@ -5,6 +5,8 @@ import {expect} from 'chai';
 import PickUpResults from '../../../source/js/components/PickUp/PickUpResults';
 import PickUpResult from '../../../source/js/components/PickUp/PickUpResult';
 
+import { manchester_results } from '../../libs/api-client.data';
+
 describe('components/PickUp/PickUpResults', function () {
     it('should be in its base state', function () {
         const wrapper = shallow(<PickUpResults/>);
@@ -21,13 +23,8 @@ describe('components/PickUp/PickUpResults', function () {
     });
 
     it ('should display results', function () {
-        const results = [
-            'Test result #1',
-            'Test result #2',
-            'Test result #3'
-        ];
-        const wrapper = shallow(<PickUpResults search_performed={true} results={results}/>);
+        const wrapper = shallow(<PickUpResults search_performed={true} results={manchester_results}/>);
 
-        expect(wrapper.find(PickUpResult)).to.have.length(3, `Doesn't contain the expected number of pickup results`);
+        expect(wrapper.find(PickUpResult)).to.have.length(6, `Doesn't contain the expected number of pickup results`);
     });
 });
