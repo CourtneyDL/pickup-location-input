@@ -2,12 +2,13 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import PickUpInput from '../../../source/js/components/App/PickUpInput';
+import PickUpInput from '../../../source/js/components/PickUp/PickUpInput';
 
-describe('components/App/PickUpInput', function () {
+describe('components/PickUp/PickUpInput', function () {
     it('should be in its base state', function () {
         const wrapper = shallow(<PickUpInput/>);
 
+        expect(wrapper.find('div.pickup-location-input')).to.have.length(1,'Root element class missing')
         expect(wrapper.contains(<label htmlFor="search_term">Pick-Up Location</label>)).to.equal(true, 'Label missing');
         expect(wrapper.find('input[name="search_term"]')).to.have.length(1, 'Input missing');
     });

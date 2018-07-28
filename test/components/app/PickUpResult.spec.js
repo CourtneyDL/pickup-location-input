@@ -2,9 +2,9 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import PickupResult from '../../../source/js/components/App/PickUpResult';
+import PickupResult from '../../../source/js/components/PickUp/PickUpResult';
 
-describe('components/App/PickUpResult', function () {
+describe('components/PickUp/PickUpResult', function () {
     it('should be in its base state', function () {
         const wrapper = shallow(<PickupResult/>);
         expect(wrapper.html()).to.equal('<div></div>', 'not an empty div');

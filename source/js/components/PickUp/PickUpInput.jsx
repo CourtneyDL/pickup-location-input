@@ -17,9 +17,8 @@ export default class PickUpInput extends Component {
     }
 
     render() {
-        console.log('PickUpInput.render');
         return (
-            <div>
+            <div className="pickup-location-input">
                 <label htmlFor="search_term">Pick-Up Location</label>
                 <input type="text" name="search_term" value={this.props.search_term} onChange={this.onChange.bind(this)}/>
             </div>
