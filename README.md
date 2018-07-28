@@ -45,10 +45,15 @@ This build is hosted via GitHub page at [https://courtneydl.github.io/pickup-loc
 ### Test Suite
 I am using this project as an opportunity to teach myself how to perform automated unit testing with React components. The test suite uses Mocha, Chai and Enzyme and is my first attempt at a full React test suite albeit in microcosm.
 
-The test directory is structured to mirror the source/js directory for any components or classes tested. The current structure is shown below:
+There is also a test script for the redux reducer.
+
+The test directory is structured to mirror the source/js directory for any components or code tested. The current structure is shown below:
 
 ```
 ├── test
+    └──redux-state
+        └──reducers
+            └──search.spec.js
     └──views
         └──App.spec.js
     └──components

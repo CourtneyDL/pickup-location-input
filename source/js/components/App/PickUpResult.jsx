@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class PickUpResult extends Component {
-    static propTypes = {
-        data: PropTypes.string,
-    }
+const PickUpResult = ({ data }) => <div>{data}</div>;
 
-    static defaultProps = {
-        data: ''
-    }
-
-    render() {
-        const { data } = this.props;
-
-        return (
-            <div>{data}</div>
-        );
-    }
+PickUpResult.propTypes = {
+    data: PropTypes.string,
 }
+
+PickUpResult.defaultProps = {
+    data: ''
+}
+
+export default PickUpResult;

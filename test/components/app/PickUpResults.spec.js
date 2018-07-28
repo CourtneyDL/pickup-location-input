@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import { PickUpResults } from '../../../source/js/components/App/PickUpResults';
+import PickUpResults from '../../../source/js/components/App/PickUpResults';
 import PickUpResult from '../../../source/js/components/App/PickUpResult';
 
 describe('components/App/PickUpResults', function () {

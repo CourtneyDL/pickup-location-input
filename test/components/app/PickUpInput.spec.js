@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import { PickUpInput } from '../../../source/js/components/App/PickUpInput';
+import PickUpInput from '../../../source/js/components/App/PickUpInput';
 
 describe('components/App/PickUpInput', function () {
     it('should be in its base state', function () {
@@ -22,10 +22,10 @@ describe('components/App/PickUpInput', function () {
     it('search term should update', function () {
         const start_value = 'This is a test';
         const end_value = 'This is a test extra';
-        const update_func = search_term => {
+        const on_change_func = search_term => {
             wrapper.setProps({ search_term });
         };
-        const wrapper = shallow(<PickUpInput search_term={start_value} updateSearchTerm={update_func}/>);
+        const wrapper = shallow(<PickUpInput search_term={start_value} onChange={on_change_func}/>);
         const input_elem = wrapper.find('input[name="search_term"]');
         expect(input_elem.props().value).to.equal(start_value,'Initial value incorrect');
         
