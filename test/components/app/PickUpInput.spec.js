@@ -10,7 +10,10 @@ describe('components/PickUp/PickUpInput', function () {
 
         expect(wrapper.find('div.pickup-location-input')).to.have.length(1,'Root element class missing')
         expect(wrapper.contains(<label htmlFor="search_term">Pick-Up Location</label>)).to.equal(true, 'Label missing');
-        expect(wrapper.find('input[name="search_term"]')).to.have.length(1, 'Input missing');
+        
+        const input_elem = wrapper.find('input[name="search_term"]');
+        expect(input_elem).to.have.length(1, 'Input missing');
+        expect(input_elem.prop('placeholder')).to.equal('city, airport, station, region and district...');
     });
 
     it('should have a search term', function () {
