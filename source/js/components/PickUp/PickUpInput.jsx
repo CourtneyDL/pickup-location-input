@@ -28,10 +28,11 @@ export default class PickUpInput extends Component {
 
     render() {
         return (
-            <div className="pickup-location-input">
-                <fieldset>
-                    <label id="search_term_label" htmlFor="search_term">Pick-Up Location</label>
-                    <input type="text" id="search_term" name="search_term" value={this.props.search_term} 
+            <div>
+                <fieldset className="fieldset fieldset--pickup-location">
+                    <label id="search_term_label" className="fieldset__label fieldset__label--pickup-location" htmlFor="search_term">Pick-Up Location</label>
+                    <input type="text" id="search_term" className="fieldset__input fieldset__input--pickup-location"
+                        name="search_term" value={this.props.search_term} 
                         ref={elem => this.input_elem = elem}
                         placeholder="city, airport, station, region and district..."
                         aria-autocomplete="list" aria-haspopup="true"

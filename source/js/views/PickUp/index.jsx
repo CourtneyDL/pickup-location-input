@@ -33,9 +33,9 @@ export class PickUp extends Component {
         const results_array = results.toJS();
 
         return (
-            <div className="pickup-location-container">
-                <div className="pickup-location-holder">
-                    <h2>Where are you going?</h2>
+            <div className="box box--pickup-location">
+                <div className="form-holder form-holder--pickup-location">
+                    <h2 className="form-holder__title">Where are you going?</h2>
                     <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
                     {search_term.length > 1 && search_performed && <PickUpResults results={results_array} search_performed={search_performed}/>}
                 </div>

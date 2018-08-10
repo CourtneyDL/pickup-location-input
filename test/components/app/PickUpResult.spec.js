@@ -10,7 +10,7 @@ import { manchester_results } from '../../libs/api-client.data';
 describe('components/PickUp/PickUpResult', function () {
     it('should be in its base state', function () {
         const wrapper = shallow(<PickupResult/>);
-        expect(wrapper.html()).to.equal('<li><div class="pickup-location-result"></div></li>', 'not an empty div');
+        expect(wrapper.html()).to.equal('<li><div class="autocomplete-result"></div></li>', 'not an empty div');
     });
     it('should display data', function () {
         const test_result = manchester_results[0];

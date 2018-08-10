@@ -8,10 +8,12 @@ describe('components/PickUp/PickUpInput', function () {
     it('should be in its base state', function () {
         const wrapper = mount(<PickUpInput/>);
 
-        expect(wrapper.find('div.pickup-location-input')).to.have.length(1,'Root element class missing')
-        expect(wrapper.contains(<label id="search_term_label" htmlFor="search_term">Pick-Up Location</label>)).to.equal(true, 'Label missing');
+        expect(wrapper.find('fieldset.fieldset.fieldset--pickup-location')).to.have.length(1,'fieldset class missing')
+        expect(wrapper.contains(<label id="search_term_label" className="fieldset__label fieldset__label--pickup-location" htmlFor="search_term">Pick-Up Location</label>)).to.equal(true, 'Label missing');
         
         const input_elem = wrapper.find('input[name="search_term"]');
+        expect(input_elem.hasClass('fieldset__input')).to.equal(true, 'input element class incorrect');
+        expect(input_elem.hasClass('fieldset__input--pickup-location')).to.equal(true, 'input modifier class incorrect');
         expect(input_elem).to.have.length(1, 'Input missing');
         expect(input_elem.prop('id')).to.equal('search_term', 'input id missing');
         expect(input_elem.prop('placeholder')).to.equal('city, airport, station, region and district...', 'placeholder missing');

@@ -8,7 +8,7 @@ const PickUpResult = ({ data }) => {
 
     return (
         <li>
-            <div className="pickup-location-result">
+            <div className="autocomplete-result">
                 { place_type &&
                     <PickUpPlaceTypeTag place_type={place_type} />
                 }
