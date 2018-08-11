@@ -14,6 +14,8 @@
     "test": "cross-env BABEL_ENV=test mocha --require babel-core/register --require babel-register test/helpers/browser.js test/**/*.spec.js",
     "test:watch": "cross-env BABEL_ENV=test mocha --require babel-core/register --require babel-register --watch --watch-extensions jsx,js test/helpers/browser.js test/**/*.spec.js",
     "start": "webpack-dev-server",
+    "lint-break-on-errors": "eslint ./source/js ./webpack.config.js ./test -f table --ext .js --ext .jsx",
+    "lint": "eslint ./source/js ./webpack.config.js ./test -f table --ext .js --ext .jsx || true",
     "build": "rimraf ./build && cross-env NODE_ENV=production webpack",
     "build:local": "rimraf ./build && cross-env NODE_ENV=production PUBLIC_URL=http://localhost:4000/build webpack",
     "build:github-pages": "rimraf ./build && cross-env NODE_ENV=production PUBLIC_URL=https://courtneydl.github.io/pickup-location-input webpack"
@@ -42,7 +44,6 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-15": "1.0.6",
     "eslint": "3.10.1",
-    "eslint-config-airbnb": "13.0.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.7.1",
@@ -56,8 +57,6 @@
     "prepush": "3.1.11",
     "react-addons-test-utils": "15.6.2",
     "react-test-renderer": "15.6.2",
-    "redux-logger": "2.7.4",
-    "redux-saga": "0.16.0",
     "rimraf": "2.6.1",
     "sass-loader": "4.0.2",
     "style-loader": "0.13.0",
@@ -73,16 +72,9 @@
   "dependencies": {
     "axios": "0.18.0",
     "babel-polyfill": "6.23.0",
-    "es6-promise": "3.3.1",
-    "immutable": "3.8.1",
     "lodash": "4.17.10",
     "prop-types": "15.5.10",
     "react": "15.5.4",
-    "react-dom": "15.5.4",
-    "react-fontawesome": "1.6.1",
-    "react-redux": "4.4.8",
-    "redux": "3.6.0",
-    "redux-actions": "2.4.0",
-    "redux-thunk": "2.2.0"
+    "react-dom": "15.5.4"
   }
 }

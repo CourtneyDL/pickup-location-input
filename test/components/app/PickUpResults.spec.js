@@ -1,3 +1,4 @@
+/* global describe, it */
 import React from 'react';
 import { shallow } from 'enzyme';
 import {expect} from 'chai';
@@ -16,7 +17,7 @@ describe('components/PickUp/PickUpResults', function () {
     });
 
     it('should display no results found', function () {
-        const wrapper = shallow(<PickUpResults search_performed={true}/>);
+        const wrapper = shallow(<PickUpResults search_performed={ true }/>);
 
         const no_results_elem = wrapper.find('.autocomplete-result.autocomplete-result--no-result');
         expect(no_results_elem).to.have.length(1, 'no results element missing');
@@ -24,7 +25,7 @@ describe('components/PickUp/PickUpResults', function () {
     });
 
     it ('should display results', function () {
-        const wrapper = shallow(<PickUpResults search_performed={true} results={manchester_results}/>);
+        const wrapper = shallow(<PickUpResults search_performed={ true } results={ manchester_results }/>);
 
         expect(wrapper.find(PickUpResult)).to.have.length(6, `Doesn't contain the expected number of pickup results`);
     });

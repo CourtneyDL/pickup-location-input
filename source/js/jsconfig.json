@@ -9,7 +9,6 @@
                 "components/*",
                 "dev/*",
                 "libs/*",
-                "redux-state/*",
                 "views/*"
             ]
         }

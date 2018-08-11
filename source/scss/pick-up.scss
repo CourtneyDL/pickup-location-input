@@ -59,7 +59,7 @@
 
 .autocomplete-results {
     border-radius: 2px;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+    box-shadow: 0 2px 2px $results-shadow-color;
     color: $result-black;
     margin: 2px 0 0;
     padding: 0;
@@ -70,41 +70,39 @@
     &--pickup-location {
         background-color: $white;
     }
+}
 
-    li {
-        list-style-type: none;
-        padding: 10px 9px;
-        border-top: 1px solid $result-border-color;
+.autocomplete-results__list-item {
+    list-style-type: none;
+    padding: 10px 9px;
+    border-top: 1px solid $result-border-color;
 
-        &:hover {
-            background-color: $result-bg-hover;
-        }
+    &:hover {
+        background-color: $result-bg-hover;
+    }
 
-        &:first-child {
-            border-top: none;
-        }
+    &:first-child {
+        border-top: none;
     }
 }
 
 .autocomplete-result {
-    .pickup-location-result-place-type, .pickup-location-result-detail {
-        display: inline-block;
-    }
-
     &--no-result {
         color: $no-results-color;
         font-style: italic;
     }
 }
 
-.pickup-location-result-detail {
+.autocomplete-result-detail {
+    display: inline-block;
     width: calc(100% - 70px);
 }
 
-.pickup-location-result-place-type {
+.autocomplete-result__place-type-tag {
     background-color: $place-type-default;
     border-radius: 3px;
     color: $white;
+    display: inline-block;
     font-weight: bold;
     font-size: 13px;
     margin: 2px 10px 0 0;
@@ -113,27 +111,27 @@
     text-align: center;
     vertical-align: top;
 
-    &.airport {
+    &--airport {
         background-color: $place-type-airport;
     }
-    &.city {
+    &--city {
         background-color: $place-type-city;
     }
-    &.station {
+    &--station {
         background-color: $place-type-station;
     }
-    &.district {
+    &--district {
         background-color: $place-type-district;
     }
 }
 
-.pickup-location-result-name {
+.autocomplete-result-detail__name {
     line-height: 14px;
     margin-bottom: 3px;
 }
 
-.pickup-location-result-locality {
-    color: gray;
+.autocomplete-result-detail__locality {
+    color: $locality-gray;
     font-size: 85%;
     line-height: 11.9px;
 }

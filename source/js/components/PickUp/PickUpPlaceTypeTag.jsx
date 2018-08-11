@@ -5,20 +5,20 @@ const place_type_names = {
     'A': 'Airport',
     'C': 'City',
     'T': 'Station',
-    'D': 'District'
+    'D': 'District',
 };
 
 const PickUpPlaceTypeTag = ({ place_type }) => {
     let label = 'Place';
-    let tag_class = 'pickup-location-result-place-type';
+    let tag_class = 'autocomplete-result__place-type-tag';
     const place_type_name = place_type_names[place_type];
     if (place_type_name) {
         label = place_type_name;
-        tag_class += ` ${place_type_name.toLowerCase()}`;
+        tag_class += ` autocomplete-result__place-type-tag--${ place_type_name.toLowerCase() }`;
     }
 
     return (
-        <div className={tag_class}>{label}</div>
+        <div className={ tag_class }>{label}</div>
     );
 };
 
@@ -27,7 +27,7 @@ PickUpPlaceTypeTag.propTypes = {
 }
 
 PickUpPlaceTypeTag.defaultProps = {
-    place_type: ''
+    place_type: '',
 }
 
 export default PickUpPlaceTypeTag;

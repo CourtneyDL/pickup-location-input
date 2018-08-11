@@ -1,54 +1,39 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { List } from 'immutable';
-
-import { updateSearchTerm } from 'redux-state/actions/search';
+import api from 'libs/api-client';
 
 import PickUpInput from 'components/PickUp/PickUpInput';
 import PickUpResults from 'components/PickUp/PickUpResults';
 
-export class PickUp extends Component {
-    static propTypes = {
-        search_performed: PropTypes.bool,
-        search_term: PropTypes.string,
-        results: PropTypes.object,
-
-        updateSearchTerm: PropTypes.func
-    }
-
-    static defaultProps = {
+export default class PickUpReact extends Component {
+    state = {
         search_performed: false,
         search_term: '',
-        results: List([])
+        results: [],
     }
 
-    onInputChange (value) {
-        this.props.updateSearchTerm(value);
+    onInputChange = (search_term) => {
+        this.setState({ search_term });
+
+        if (search_term.length >= 2) {
+            api.search(search_term)
+                .then(results => this.setState({ search_performed: true, results }))
+                .catch(() => this.setState({ search_performed: true, results: [] }));
+        }
     }
 
     render() {
-        const { search_term, results, search_performed } = this.props;
-        const results_array = results.toJS();
+        const { search_term, results, search_performed } = this.state;
 
         return (
-            <div className="box box--pickup-location">
-                <div className="form-holder form-holder--pickup-location">
-                    <h2 className="form-holder__title">Where are you going?</h2>
-                    <PickUpInput search_term={search_term} onChange={this.onInputChange.bind(this)} />
-                    {search_term.length > 1 && search_performed && <PickUpResults results={results_array} search_performed={search_performed}/>}
+            <div className="container">
+                <div className="box box--pickup-location">
+                    <div className="form-holder form-holder--pickup-location">
+                        <h2 className="form-holder__title">Where are you going?</h2>
+                        <PickUpInput search_term={ search_term } onChange={ this.onInputChange } />
+                        {search_term.length > 1 && search_performed && <PickUpResults results={ results } search_performed={ search_performed }/>}
+                    </div>
                 </div>
             </div>
         );
     }
 }
-
-export default connect(
-    state => ({
-        search_performed: state.search.get('search_performed'),
-        search_term: state.search.get('search_term'),
-        results: state.search.get('results')
-    }),
-    dispatch => bindActionCreators({ updateSearchTerm }, dispatch)
-)(PickUp);

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const search = (search_term, number_of_results_required=6) => {
     search_term = search_term.replace(/\s/g,'+');
-    return _get(`https://cors.io/?https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=${number_of_results_required}&solrTerm=${search_term}`)
+    return _get(`https://cors.io/?https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=${ number_of_results_required }&solrTerm=${ search_term }`)
         .then(_processResponse);
 }
 
@@ -28,7 +28,7 @@ export const _processResponse = data => {
         return {
             name,
             place_type,
-            locality
+            locality,
         }
     });
 };
@@ -39,5 +39,5 @@ const _get = url => {
 }
 
 export default {
-    search
+    search,
 };

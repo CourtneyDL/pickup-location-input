@@ -7,15 +7,15 @@ const PickUpResult = ({ data }) => {
     const { name, place_type, locality } = data;
 
     return (
-        <li>
+        <li className="autocomplete-results__list-item">
             <div className="autocomplete-result">
                 { place_type &&
-                    <PickUpPlaceTypeTag place_type={place_type} />
+                    <PickUpPlaceTypeTag place_type={ place_type } />
                 }
                 { name &&
-                    <div className="pickup-location-result-detail">
-                        <div className="pickup-location-result-name">{name}</div>
-                        {locality && <div className="pickup-location-result-locality">{locality}</div>}
+                    <div className="autocomplete-result-detail">
+                        <div className="autocomplete-result-detail__name">{name}</div>
+                        {locality && <div className="autocomplete-result-detail__locality">{locality}</div>}
                     </div>
                 }
             </div>
@@ -28,7 +28,7 @@ PickUpResult.propTypes = {
 }
 
 PickUpResult.defaultProps = {
-    data: {}
+    data: {},
 }
 
 export default PickUpResult;

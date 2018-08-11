@@ -1,3 +1,4 @@
+/* global describe, it */
 import {expect} from 'chai';
 
 import { _processResponse } from '../../source/js/libs/api-client';

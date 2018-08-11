@@ -1,3 +1,4 @@
+/*eslint-disable */
 export const empty_data = {
     "results": {
         "isGooglePowered": false,

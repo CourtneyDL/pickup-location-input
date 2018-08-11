@@ -1,3 +1,4 @@
+/* global require, process, __dirname, module */
 const webpack = require('webpack');
 const path = require('path');
 
@@ -29,13 +30,13 @@ const plugins = [
         minChunks(module) {
             const context = module.context;
             return context && context.indexOf('node_modules') >= 0;
-        }
+        },
     }),
     new webpack.DefinePlugin({
         'process.env': {
             NODE_ENV: JSON.stringify(nodeEnv),
         },
-        'PUBLIC_URL': JSON.stringify(publicPath)
+        'PUBLIC_URL': JSON.stringify(publicPath),
     }),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
@@ -45,17 +46,17 @@ const plugins = [
     }),
     new webpack.LoaderOptionsPlugin({
         options: {
-        postcss: [
-            autoprefixer({
-            browsers: [
-                'last 3 version',
-                'ie >= 10',
+            postcss: [
+                autoprefixer({
+                    browsers: [
+                        'last 3 version',
+                        'ie >= 10',
+                    ],
+                }),
             ],
-            }),
-        ],
-        context: sourcePath,
+            context: sourcePath,
         },
-    })
+    }),
 ];
 
 // Common rules
@@ -64,20 +65,20 @@ const rules = [
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-        'babel-loader',
+            'babel-loader',
         ],
     },
     {
         test: /\.svg$/,
         use: [
-        {
-            loader: 'svg-sprite-loader',
-            options: {
-            extract: true,
-            spriteFilename: 'icons-sprite.svg',
+            {
+                loader: 'svg-sprite-loader',
+                options: {
+                    extract: true,
+                    spriteFilename: 'icons-sprite.svg',
+                },
             },
-        },
-        'svgo-loader',
+            'svgo-loader',
         ],
         include: iconPath,
     },
@@ -88,32 +89,32 @@ const rules = [
     },
     { 
         test: /\.css$/, 
-        loader: "style-loader!css-loader" 
+        loader: "style-loader!css-loader",
     },
     { 
         test: /\.png$/, 
-        loader: "url-loader?limit=100000" 
+        loader: "url-loader?limit=100000",
     },
     { 
         test: /\.jpg$/, 
-        loader: "file-loader" 
+        loader: "file-loader",
     },
     {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
     },
     {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
     },
     {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'file-loader'
+        loader: 'file-loader',
     },
     {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
-    }
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+    },
 ];
 
 if (isProduction) {
@@ -126,11 +127,11 @@ if (isProduction) {
     // Production rules
     rules.push(
         {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader!postcss-loader!sass-loader',
-        }),
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader!postcss-loader!sass-loader',
+            }),
         }
     );
 } else {
@@ -172,9 +173,8 @@ module.exports = {
         filename: 'app-[hash].js',
     },
     externals: {
-        'cheerio': 'window',
         'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
+        'react/lib/ReactContext': true,
     },
     module: {
         rules,
@@ -189,9 +189,8 @@ module.exports = {
             'components' : path.join(jsSourcePath, 'components'),
             'dev'        : path.join(jsSourcePath, 'dev'),
             'libs'       : path.join(jsSourcePath, 'libs'),
-            'redux-state': path.join(jsSourcePath, 'redux-state'),
-            'views'      : path.join(jsSourcePath, 'views')
-        }
+            'views'      : path.join(jsSourcePath, 'views'),
+        },
     },
     plugins,
     devServer: {
@@ -214,7 +213,7 @@ module.exports = {
             warnings: true,
             colors: {
                 green: '\u001b[32m',
-            }
+            },
         },
-    }
+    },
 };
